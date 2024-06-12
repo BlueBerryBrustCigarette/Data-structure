@@ -1,5 +1,5 @@
 # Data-structure
 这个库用于我自己存放
-用C++的类模板实现的一些数据结构
+学习数据结构时的一些实现
 
-LinkBiTree 感觉写的不好
+LinkBiTree 写的不好
