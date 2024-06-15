@@ -76,9 +76,9 @@ private:
 				Search(bst->rchild, bsdata);
 		}
 	}
-	void Delete_Node(BSTNode*& bst)                            //±ØÐëÊÇ&
+	void Delete_Node(BSTNode*& bst)                            //å¿…é¡»æ˜¯&
 	{
-		if (bst->lchild && bst->rchild)							//ÓÃ±ÈËûÐ¡µÄ×î´óÖµÀ´´úÌæËü
+		if (bst->lchild && bst->rchild)							//ç”¨æ¯”ä»–å°çš„æœ€å¤§å€¼æ¥ä»£æ›¿å®ƒ
 		{
 			BSTNode** max_smaller = &bst->lchild;
 			while ((*max_smaller)->rchild)
@@ -99,7 +99,7 @@ private:
 			delete temp;
 		}
 	}
-	bool Search_Delete(BSTNode*& bst, BSData bsdata)              //±ØÐëÊÇ&
+	bool Search_Delete(BSTNode*& bst, BSData bsdata)              //å¿…é¡»æ˜¯&
 	{
 		if (bst == NULL)
 			return false;
@@ -141,5 +141,5 @@ int main()
 	if (T.BS_Search(text))
 		cout << T.BS_Search(text)->data.key;
 	else
-		cout << text.key << "Ã»ÓÐ²éÕÒµ½" << endl;
+		cout << text.key << "æ²¡æœ‰æŸ¥æ‰¾åˆ°" << endl;
 }
