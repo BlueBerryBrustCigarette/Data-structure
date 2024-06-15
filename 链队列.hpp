@@ -17,7 +17,7 @@ public:
 	QNode<DataType>* rear;
 	QNode<DataType>* front;
 
-	//³õÊ¼»¯¶ÓÁÐ
+	//åˆå§‹åŒ–é˜Ÿåˆ—
 	bool InitLinkQueue()
 	{
 		this->front = new QNode;
@@ -26,7 +26,7 @@ public:
 		return true;
 	}
 
-	//´Ó¶ÓÎ²Èë¶Ó
+	//ä»Žé˜Ÿå°¾å…¥é˜Ÿ
 	bool EnQueue(DataType e)
 	{
 		QNode* p = new QNode;
@@ -38,7 +38,7 @@ public:
 		return true;
 	}
 
-	//¶ÓÍ·ÔªËØ³ö¶Ó
+	//é˜Ÿå¤´å…ƒç´ å‡ºé˜Ÿ
 	bool DeQueue()
 	{
 		if (this->front == this->rear) return false;
@@ -51,7 +51,7 @@ public:
 		return true;
 	}
 
-	//»ñµÃ¶ÓÍ·ÔªËØ
+	//èŽ·å¾—é˜Ÿå¤´å…ƒç´ 
 	DataType GetHead()
 	{
 		if (this->front != this->rear)
