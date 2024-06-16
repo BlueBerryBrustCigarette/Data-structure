@@ -11,7 +11,7 @@ public:
 	SqList(Record* base, int length) :Base(base), Length(length)
 	{
 	}
-	//¿ìËÙÅÅĞò
+	//ìš°é†µíƒ¤åŸ¼
 	void QuickSort()
 	{
 		Qsort(1, Length);
@@ -54,12 +54,12 @@ private:
 int main()
 {
 	Record Data1[7];
-	cout << "ÇëÊäÈë¼ÇÂ¼:" << endl;
+	cout << "è¯·è¾“å…¥è®°å½•:" << endl;
 	for (int i = 1; i < 7; i++)
 		cin >> Data1[i];
 	SqList T1(Data1, 6);
 	T1.QuickSort();
-	cout << "¿ìËÙÅÅĞòºó:";
+	cout << "å¿«é€Ÿæ’åºå:";
 	T1.Show();
 }
 
