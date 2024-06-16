@@ -11,7 +11,7 @@ public:
 	SqList(Record* base, int length) :Base(base), Length(length)
 	{
 	}
-	//우醵탤埼
+
 	void QuickSort()
 	{
 		Qsort(1, Length);
