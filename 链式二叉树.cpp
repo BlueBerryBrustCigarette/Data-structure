@@ -4,13 +4,13 @@ using namespace std;
 #include<stack>
 #include<vector>
 
-typedef struct Threaded_BiTNode
+typedef struct BiTNode
 {
 	char data;
-	Threaded_BiTNode* lchild, * rchild;
-}Threaded_BiTNode, * Threaded_BiTree;
+	BiTNode* lchild, * rchild;
+}BiTNode, * BiTree;
 
-void PreT_Create(Threaded_BiTree& T)
+void PreT_Create(BiTree& T)
 {
 	char ch;
 	cin >> ch;
@@ -18,18 +18,18 @@ void PreT_Create(Threaded_BiTree& T)
 	if (ch == '#') T = NULL;
 	else
 	{
-		T = new Threaded_BiTNode;
+		T = new BiTNode;
 		T->data = ch;
 		PreT_Create(T->lchild);
 		PreT_Create(T->rchild);
 	}
 }
-void NR_InT_Show(Threaded_BiTree T)
+void NR_InT_Show(BiTree T)
 {
 	if (T)
 	{
-		stack<Threaded_BiTree> BiTree_Sta;
-		Threaded_BiTree now = T;
+		stack<BiTree> BiTree_Sta;
+		BiTree now = T;
 		while (!BiTree_Sta.empty() || now)
 		{
 			if (now)
@@ -47,7 +47,7 @@ void NR_InT_Show(Threaded_BiTree T)
 		}
 	}
 }
-void InT_Show(Threaded_BiTree T)
+void InT_Show(BiTree T)
 {
 	if (T)
 	{
@@ -56,7 +56,7 @@ void InT_Show(Threaded_BiTree T)
 		InT_Show(T->rchild);
 	}
 }
-void PosT_Show(Threaded_BiTree T)
+void PosT_Show(BiTree T)
 {
 	if (T)
 	{
@@ -65,16 +65,16 @@ void PosT_Show(Threaded_BiTree T)
 		cout << T->data;
 	}
 }
-void LevelT_Show(Threaded_BiTree& T)
+void LevelT_Show(BiTree& T)
 {
 	if (T)
 	{
-		//≥ı ºªØ“ª∏ˆ∂”¡–
-		queue<Threaded_BiTree> BiTree_Que;
+		//ÂàùÂßãÂåñ‰∏Ä‰∏™ÈòüÂàó
+		queue<BiTree> BiTree_Que;
 		BiTree_Que.push(T);
 		while (!BiTree_Que.empty())
 		{
-			Threaded_BiTree now = BiTree_Que.front();
+			BiTree now = BiTree_Que.front();
 			BiTree_Que.pop();
 			cout << now->data;
 			if (now->lchild != NULL)
@@ -84,7 +84,7 @@ void LevelT_Show(Threaded_BiTree& T)
 		}
 	}
 }
-void Copy(Threaded_BiTree &NewT, Threaded_BiTree T)
+void Copy(BiTree& NewT, BiTree T)
 {
 	if (T == NULL)
 	{
@@ -93,13 +93,13 @@ void Copy(Threaded_BiTree &NewT, Threaded_BiTree T)
 	}
 	else
 	{
-		NewT = new Threaded_BiTNode;
+		NewT = new BiTNode;
 		NewT->data = T->data;
 		Copy(NewT->lchild, T->lchild);
 		Copy(NewT->rchild, T->rchild);
 	}
 }
-int Depth(Threaded_BiTree T)
+int Depth(BiTree T)
 {
 	if (T == NULL) return 0;
 	else
@@ -110,9 +110,9 @@ int Depth(Threaded_BiTree T)
 		else return rdep + 1;
 	}
 }
-int NodeCount(Threaded_BiTree T)
+int NodeCount(BiTree T)
 {
-	if (T == NULL) 
+	if (T == NULL)
 		return 0;
 	else
 	{
@@ -121,7 +121,7 @@ int NodeCount(Threaded_BiTree T)
 		return lnode + rnode + 1;
 	}
 }
-int LeafCount(Threaded_BiTree T)
+int LeafCount(BiTree T)
 {
 	if (T == NULL)
 		return 0;
@@ -138,11 +138,11 @@ int LeafCount(Threaded_BiTree T)
 	}
 }
 vector<char> path;
-void ShowPath(Threaded_BiTree T)
+void ShowPath(BiTree T)
 {
 	if (T->lchild == NULL && T->rchild == NULL)
 	{
-		cout << T->data << "µΩ∏˘Ω·µ„µƒ¬∑æ∂Œ™:"<<T->data;
+		cout << T->data << "Âà∞Ê†πÁªìÁÇπÁöÑË∑ØÂæÑ‰∏∫:" << T->data;
 		for (vector<char>::reverse_iterator now = path.rbegin(); now != path.rend(); now++)
 			cout << *now;
 		cout << endl;
@@ -159,20 +159,20 @@ void ShowPath(Threaded_BiTree T)
 }
 int main()
 {
-	Threaded_BiTree T;
+	BiTree T;
 	PreT_Create(T);
 
-	cout << "≤„¥Œ±È¿˙Ω·π˚:";
+	cout << "Â±ÇÊ¨°ÈÅçÂéÜÁªìÊûú:";
 	LevelT_Show(T);
 	cout << endl;
-	
+
 	ShowPath(T);
 	cout << endl;
 }
 
-/*  æ¿˝ ‰»Î
+/* Á§∫‰æãËæìÂÖ•
 ABC##DE#G##F###
-÷––Ú±È¿˙Ω·π˚:CBEGDFA
-∫Û–Ú±È¿˙Ω·π˚:CGEFDBA
-≤„¥Œ±È¿˙Ω·π˚:ABCDEFG
+‰∏≠Â∫èÈÅçÂéÜÁªìÊûú:CBEGDFA
+ÂêéÂ∫èÈÅçÂéÜÁªìÊûú:CGEFDBA
+Â±ÇÊ¨°ÈÅçÂéÜÁªìÊûú:ABCDEFG
 */
